@@ -1,11 +1,3 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include<iostream>
 #include<time.h>
 #include<stdio.h>
@@ -14,31 +6,37 @@ Write your code in this editor and press "Run" button to compile and execute it.
 using namespace std;
 
 template <class T>
-struct node{
+struct node
+{
     T data;
     node *next;
     node *prev;
 };
 template <class T>
 
-class list{
+class list
+{
     private:
         node<T> *beg;
         node<T> *end;
         int length;
     public:
-        list(){
+        list()
+        {
             beg=NULL;
             end=NULL;
             length=0;
         }
         
-        bool is_empty(){
+        bool is_empty()
+        {
             return beg==NULL;
         }
         
-        void add(T data, int pos){
-            if(is_empty()&&pos==1){
+        void add(T data, int pos)
+        {
+            if(is_empty()&&pos==1)
+            {
                 beg = new node<T>();
                 beg->data=data;
                 beg->next=NULL;
@@ -46,10 +44,14 @@ class list{
                 end=beg;
                 length++;
             }
-            else{
+          
+            else
+            {
                 bool added=false;
-                if(!is_empty()){
-                    if(pos==1){
+                if(!is_empty())
+                {
+                    if(pos==1)
+                    {
                         added=true;
                         node<T>* p=beg;
                         beg=new node<T>();
@@ -58,8 +60,9 @@ class list{
                         beg->prev=NULL;
                         p->prev=beg;
                         length++;
-                    }
-                    if(pos==length+1&&!added){
+                   }
+                    if(pos==length+1&&!added)
+                    {
                         added = true;
                         node<T> *p=end;
                         end=new node<T>();
@@ -69,7 +72,8 @@ class list{
                         p->next=end;
                         length++;
                     }
-                    if(pos>1&&pos<length+1&&!added){
+                    if(pos>1&&pos<length+1&&!added)
+                    {
                         added=true;
                         node<T> *p=beg;
                         int counter=1;
@@ -91,30 +95,39 @@ class list{
             }
         }
         
-        void remove(int pos){
-            if(pos==1){
-                if(beg==end){
+        void remove(int pos)
+        {
+            if(pos==1)
+            {
+                if(beg==end)
+                {
                     delete beg;
                     beg=NULL;
                     end=NULL;
                 }
-                else{
+                else
+                {
                     beg=beg->next;
                     delete beg->prev;
                     beg->prev=NULL;
                 }
                 length--;
             }
-            if(pos==length&&length!=1){
+          
+            if(pos==length&&length!=1)
+            {
                 end=end->prev;
                 delete end->next;
                 end->next=NULL;
                 length--;
             }
-            if(pos>1&&pos<length){
+          
+            if(pos>1&&pos<length)
+            {
                 int counter=1;
                 node<T> *p=beg;
-                while(counter<pos){
+                while(counter<pos)
+                {
                     counter++;
                     p=p->next;
                 }
@@ -127,15 +140,18 @@ class list{
             }
         }
         
-        node<T> * get_beg(){
+        node<T> * get_beg()
+        {
             return beg;
         }
         
-        node<T> * get_end(){
+        node<T> * get_end()
+        {
             return end;
         }
         
-        int get_length(){
+        int get_length()
+        {
             return length;
         }
         
@@ -196,7 +212,6 @@ class list{
                     p=p->next;
                     q=q->next;
                 }
-                
             }
         }
         
